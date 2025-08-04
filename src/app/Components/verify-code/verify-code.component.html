@@ -1,0 +1,45 @@
+<div class="w-50 container bg-dark mt-3">
+    <form (ngSubmit)="handVerifyCode()" class="p-4 text-white" [formGroup]="VerifyCodeGroup">
+      @if(forminvalidMesage!="")
+      {
+         <p class="alert alert-danger text-center mt-2 mx-auto">{{forminvalidMesage}}</p>
+      }
+     
+       
+         <label for="resetCode">ResetCode</label>
+        <input formControlName="resetCode"  class="form-control"  id="resetCode" >
+          
+     @if(VerifyCodeGroup.get('resetCode')?.touched)
+       {
+              @let resetCodeobj=VerifyCodeGroup.get("resetCode");
+            @if(resetCodeobj?.getError('required'))
+            {
+            <p class="text-info mt-1 font-sm">u have to enter email</p>
+            }
+
+            @if(resetCodeobj?.getError('resetCode'))
+            {
+                <p class="text-info mt-1 font-sm">u have to enter corect email like alaa gmail.com</p>
+            }
+
+       }  
+      
+        
+ 
+   
+         <button  class="btn btn-success px-3 mt-2 " [disabled]="VerifyCodeGroup.invalid || isloading">
+          @if(isloading==false)
+          {
+               <span>submit</span>
+          }
+          @else {
+              <span class="fa-solid fa-spinner fa-spin"></span>
+          }
+      
+        </button>
+     
+     
+    </form>
+
+</div>
+

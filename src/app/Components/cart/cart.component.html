@@ -1,0 +1,67 @@
+@if(cartdetails!=null)
+{
+
+@if(cartdetails.numOfCartItems>0)
+{
+<div class="container mt-4 bg-body-secondary p-3">
+    <div class="p-4 bg-light">
+        <h2 class="fw-bold text-capitalize">shop cart</h2>
+        <p class="text-main fw-bold fw-medium">Total price:{{cartdetails.data.totalCartPrice}} EGP></p>
+        <!-- <span class="text-main fw-bold fw-medium">Total price:{{cartdetails.data.totalCartPrice}} EGP</span> -->
+        @for(cartdetail of cartdetails.data.products ; track cartdetail._id)
+        {
+        <div class="row mt-2 ">
+            <div class="col-md-1">
+                <div>
+                    <img class="w-100 border  shadow-sm" [src]="cartdetail.product.imageCover"
+                        [alt]="cartdetail.product.title">
+                </div>
+            </div>
+            <div class="col-md-11 bg-info bg-opacity-10 border border-1 shadow-sm ">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="content">
+                        <P class="my-0 mt-1 ms-0 font-sm fw-bold ">{{cartdetail.product.category.name}}</P>
+                        <p class="font-sm fw-bold text-main mb-1 mt-1">Price :{{cartdetail.price}}</p>
+                        <button (click)="removespecificItem(cartdetail.product._id)"
+                            class="btn bg-body product rounded-1 p-1 fw-bold"><i
+                                class="fa-solid fa-trash text-danger p-1"></i>Remove</button>
+                        <!-- <div class="mt-0"><i class="fa-solid fa-trash text-main"></i><span class="ms-1 fw-bold text-danger">Remove</span></div> -->
+
+                    </div>
+                    <div class="updatcontent ">
+                        <button (click)="updateQuantity(cartdetail.product._id,cartdetail.count+1)"
+                            class=" rounded-1 bg-main text-white mx-2 fw-bold">+</button>
+                        <span class="fw-bold text-main">{{cartdetail.count}}</span>
+                        <button (click)="updateQuantity(cartdetail.product._id,cartdetail.count-1)"
+                            class=" rounded-1 bg-main text-white mx-2 fw-bold">-</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        }
+
+
+    </div>
+    <div class=" d-flex justify-content-between align-items-baseline">
+        <div>
+            <button [routerLink]="['/shipping-address',cartdetails.cartId,'card']"  class="btn bg-success text-white ms-2 fw-bold">Payment Online <span class="bg-primary p-1 rounded ms-1">visa</span></button>
+            <button [routerLink]="['/shipping-address',cartdetails.cartId,'cash']"  class="btn bg-success text-white ms-2 fw-bold">Payment Cash</button>
+        </div>
+        <button (click)="RemoveAll()" class="btn btn-danger rounded-1 mt-4 fw-bold">Remove All
+            <i class="fa-solid fa-trash"></i>
+        </button>
+    </div>
+</div>
+}
+<!-- @else {
+            <h1 class="fw-bold text-center border-2 shadow-sm bg-light">no data found </h1>
+
+          } -->
+}
+@if(iscartempty==true) {
+
+<h1 class="fw-bold text-center border-2 shadow-sm bg-light mt-3 text-capitalize text-danger">no data found</h1>
+
+
+}

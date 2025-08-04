@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <img src="images/freshcart-logo.svg" alt="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      @if(islogginin==true)
+      {
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li class="nav-item ">
+          <a class="nav-link active" aria-current="page" routerLink="home" routerLinkActive="text-main">Home</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="cart" routerLinkActive="text-main">Cart</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="products" routerLinkActive="text-main">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="Categories" routerLinkActive="text-main">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="brands" routerLinkActive="text-main">Brands</a>
+        </li>
+
+      </ul>
+
+      }
+
+
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+        <li class="nav-item flex align-items-center mt-2">
+          <div>
+            <i class="mx-2 fab fa-instegram"></i>
+            <i class="mx-2 fab fa-facebook"></i>
+            <i class="mx-2 fab fa-twitter"></i>
+            <i class="mx-2 fab fa-youtube"></i>
+            <i class="mx-2 fab fa-linkedin"></i>
+            <i class="mx-2 fab fa-tiktok"></i>
+          </div>
+        </li>
+        @if(islogginin==false)
+        {
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="login" routerLinkActive="text-main">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="signUp" routerLinkActive="text-main">SignUp</a>
+        </li>
+        }
+
+        <li class="nav-item position-relative">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="text-main">
+            <span class="position-absolute top-1 start-99 translate-middle badge fs-sm  rounded-pill bg-main">
+             {{numberOfItemCart}}
+              <span class="visually-hidden">unread messages</span>
+            </span>
+            <i class="fa-solid fa-cart-shopping"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="register" routerLinkActive="text-main" (click)="loginout()">logout</a>
+        </li>
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

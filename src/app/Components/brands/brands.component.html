@@ -1,0 +1,19 @@
+<div class="mt-5 bg-light">
+
+
+    @if(brandList)
+    {
+    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 mt-2">
+        @for (brand of brandList; track brand._id) {
+        <div class=" text-center p-2 product ">
+            <!-- <a [routerLink]='["/product-details",category._id]'> -->
+
+            <img [src]="brand.image" style="height: 200px;" class="w-100 object-fit-contain" [alt]="brand.name">
+            <span class="text-main fw-bold">{{brand.name}}</span>
+
+            <!-- </a> -->
+        </div>
+        }
+    </div>
+    }
+</div>

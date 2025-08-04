@@ -1,0 +1,43 @@
+<h2 class="text-center mt-2 mb-5 border-1 shadow-sm fw-bold fw-medium bg-light text-danger">Product Details</h2>
+@if(productdetail)
+{
+<div class="row ">
+    <div class="col-md-4 ">
+        <div class="p-4">
+            <!-- <img [src]="productdetail.imageCover" class="w-100 product p-2 border shadow" alt=""> -->
+            <owl-carousel-o [options]="customOptions">
+
+                @for (image of productdetail.images; track $index) {
+                <ng-template carouselSlide>
+                    <img class="w-100" [src]="image"/>
+                </ng-template>
+                }
+
+            </owl-carousel-o>
+            <div class="text-center fw-medium cursor-pointer">
+                <a [routerLink]="['/product-details','6428ead5dc1175abc65ca0ad']" class="text-primary text-capitalize">
+                    go to another image</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 shadow ">
+        <div class="p-2 ms-0">
+            <h2 class="fw-medium fw-bold mt-3">{{productdetail.title}}</h2>
+            <p class="fw-light text-secondary my-3">{{productdetail.description}}</p>
+            <span class="fw-medium text-main fw-bold my-3">{{productdetail.category.name}}</span>
+            <p class="fw-bold my-2 text-secondary mt-1"> quantity available:{{productdetail.quantity}}</p>
+            <p class="fw-bold my-0 text-secondary mb-2">brand:{{productdetail.brand.name}}</p>
+            <div class="d-flex justify-content-between">
+                <span class="text-main fw-bold ">{{productdetail.price}}<span
+                        class="text-secondary ms-2">EGP</span></span>
+                <div>
+                    <i class="fa-solid fa-star rating-color"></i>
+                    <span class="fw-bold">{{productdetail.ratingsAverage}}</span>
+                </div>
+            </div>
+
+        </div>
+        <button class="btn w-100 btn-success ms-1">Add to cart</button>
+    </div>
+</div>
+}

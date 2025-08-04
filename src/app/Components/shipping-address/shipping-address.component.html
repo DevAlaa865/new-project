@@ -1,0 +1,14 @@
+<div class="w-75 mx-auto mt-5 ">
+   <h2 class="mt-3">Shipping Address</h2>
+   <form [formGroup]="shippingaddressForm" (ngSubmit)="checksession()">
+    <label  class="mt-2 fw-bold" for="details">details</label>
+    <input type="text" formControlName="details" class="form-control">
+
+    <label class="mt-2 fw-bold" for="phone">phone</label>
+    <input type="text" formControlName="phone" class="form-control" >
+
+        <label class="mt-2 fw-bold" for="phone">city</label>
+    <input type="text" formControlName="city" class="form-control" >
+    <button class=" btn btn-success mt-3">send</button>
+   </form>
+</div>

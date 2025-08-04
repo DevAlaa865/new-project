@@ -1,0 +1,14 @@
+<h2 class="fw-bold text-capitalize py-3">Popular caegory New</h2>
+<div class="row ">
+
+     <owl-carousel-o [options]="customOptions" >
+
+                @for (category of categories; track category._id) {
+                <ng-template carouselSlide>
+                    <a routerLink="/cart"><img style="height: 200px;" class="w-100 object-fit-cover cursor-pointer"   [src]="category.image"/></a>
+                     <p class="text-center mt-2 fw-bold">{{category.name}}</p>
+                </ng-template>
+                }
+
+            </owl-carousel-o>
+</div>

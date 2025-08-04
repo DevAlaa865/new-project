@@ -1,0 +1,109 @@
+<div class="w-50 container bg-dark mt-3">
+    <form (ngSubmit)="handsubmit()" class="p-4 text-white" [formGroup]="FormGroupObj">
+      @if(forminvalidMesage!="")
+      {
+         <p class="alert alert-danger text-center mt-2 mx-auto">{{forminvalidMesage}}</p>
+      }
+     
+        <label for="username">username</label>
+        <input formControlName="name"   class="form-control"  type="text"  id="username" >
+        
+       @if(FormGroupObj.get('name')?.touched)
+       {
+            @let usernameobj=FormGroupObj.get("name");
+            @if(usernameobj?.getError('required'))
+            {
+            <p class="text-info mt-1 font-sm">u have to enter username</p>
+            }
+          
+
+             @if(usernameobj?.getError('minlength'))
+            {
+                <p class="text-info mt-1 font-sm">u have to enter at least 3 letters in user name</p>
+            } 
+
+              
+
+       } 
+      
+         <label for="email">email</label>
+        <input formControlName="email"  class="form-control" type="email"  id="email" >
+          
+     @if(FormGroupObj.get('email')?.touched)
+       {
+              @let emailobj=FormGroupObj.get("email");
+            @if(emailobj?.getError('required'))
+            {
+            <p class="text-info mt-1 font-sm">u have to enter email</p>
+            }
+
+            @if(emailobj?.getError('email'))
+            {
+                <p class="text-info mt-1 font-sm">u have to enter corect email like alaa gmail.com</p>
+            }
+
+       }  
+      
+         <label for="password">password</label>
+        <input formControlName="password"  class="form-control" type="password" id="password">
+         @let passwordobj=FormGroupObj.get("password");
+        @if(FormGroupObj.get('password')?.touched)
+       {
+          
+            @if(passwordobj?.getError('required'))
+            {
+            <p class="text-info mt-1 font-sm">u have to enter password</p>
+            }
+
+            <!-- @if(passwordobj?.getError('pattern'))
+            {
+                <p class="text-info mt-1 font-sm">u have to enter corect pattern a-z letter 1-9 numbers  alaa123456789</p>
+            } -->
+
+       }  
+     <label for="password">rePassword</label>
+        <input formControlName="rePassword" class="form-control" type="password"  id="rePassword" >
+           
+         @let repasswordobj=FormGroupObj.get("rePassword");
+      @if(repasswordobj?.dirty && passwordobj?.dirty)
+      {
+           @if(FormGroupObj.getError('passwordmismtch'))
+               {
+                  <p class="text-danger mt-1 font-sm">this password not matching</p>
+               }
+            
+      }
+    
+              
+     
+      
+          <label for="phone">phone</label>
+        <input formControlName="phone" class="form-control" type="text"  id="phone" >
+                  @if(FormGroupObj.get('rePassword')?.touched)
+       {
+            @let phoneobj=FormGroupObj.get("phone");
+            @if(phoneobj?.getError('required'))
+            {
+            <p class="text-info mt-1 font-sm">u have to enter password</p>
+            }
+
+            @if(phoneobj?.getError('pattern'))
+            {
+                <p class="text-info mt-1 font-sm">u have to enter corect pattern a-z letter 1-9 numbers  alaa123456789</p>
+            }
+
+       } 
+       <button  class="btn btn-success px-3 mt-2 " [disabled]="FormGroupObj.invalid || isloading">
+          @if(isloading==false)
+          {
+               <span>submit</span>
+          }
+          @else {
+    <span class="fa-solid fa-spinner fa-spin"></span>
+          }
+      
+        </button>
+    </form>
+
+</div>
+<!-- [disabled]="FormGroupObj.invalid" -->

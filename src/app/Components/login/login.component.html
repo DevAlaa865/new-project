@@ -1,0 +1,55 @@
+<div class="w-50 container bg-dark mt-3">
+    <form (ngSubmit)="handLogin()" class="p-4 text-white" [formGroup]="LoginFormObj">
+      @if(forminvalidMesage()!="")
+      {
+         <p class="alert alert-danger text-center mt-2 mx-auto">{{forminvalidMesage()}}</p>
+      }
+     
+       
+         <label for="email">Email</label>
+        <input formControlName="email"  class="form-control" type="email"  id="email" >
+          
+     @if(LoginFormObj.get('email')?.touched)
+       {
+              @let emailobj=LoginFormObj.get("email");
+            @if(emailobj?.getError('required'))
+            {
+            <p class="text-info mt-1 font-sm">u have to enter email</p>
+            }
+
+            @if(emailobj?.getError('email'))
+            {
+                <p class="text-info mt-1 font-sm">u have to enter corect email like alaa gmail.com</p>
+            }
+
+       }  
+      
+         <label for="password">Password</label>
+        <input formControlName="password"  class="form-control" type="password" id="password">
+         @let passwordobj=LoginFormObj.get("password");
+        @if(LoginFormObj.get('password')?.touched)
+       {
+          
+            @if(passwordobj?.getError('required'))
+            {
+            <p class="text-info mt-1 font-sm">u have to enter password</p>
+            }
+       }  
+ 
+       <div class="d-flex justify-content-end  align-items-baseline">
+           <a routerLink="/Forget-Password" class="text-secondary text-decoration-underline me-2 text-white">Forget Password?</a>
+         <button  class="btn btn-success px-3 mt-2 " [disabled]="LoginFormObj.invalid || isloading">
+          @if(isloading()==false)
+          {
+               <span>Login</span>
+          }
+          @else {
+              <span class="fa-solid fa-spinner fa-spin"></span>
+          }
+      
+        </button>
+     
+       </div>
+    </form>
+
+</div>

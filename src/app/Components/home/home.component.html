@@ -1,0 +1,16 @@
+
+<app-main-sider></app-main-sider>
+
+<app-categories-slider></app-categories-slider>
+
+ <input [(ngModel)]="seaechInput" type="search" class="form-control my-3" placeholder="please enter product name" >
+<div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 mt-2">
+    @for(product of (productlist.slice(0,30) |serchproduct:seaechInput);track product._id)
+    {
+    <div class="col p-2">
+       <app-product [product]="product"></app-product>
+
+    </div>
+    }
+
+</div>

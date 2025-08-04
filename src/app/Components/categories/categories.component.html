@@ -1,0 +1,19 @@
+<div class="mt-5 bg-light">
+
+
+    @if(allGategories)
+    {
+    <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 mt-2">
+        @for (category of allGategories; track category._id) {
+        <div class=" text-center p-1 product ">
+            <!-- <a [routerLink]='["/product-details",category._id]'> -->
+
+            <img [src]="category.image" style="height: 200px;" class="w-100 object-fit-contain" [alt]="category.name">
+            <span class="text-main">{{category.name}}</span>
+
+            <!-- </a> -->
+        </div>
+        }
+    </div>
+    }
+</div>
