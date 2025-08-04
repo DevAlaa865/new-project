@@ -38,7 +38,7 @@
  
        <div class="d-flex justify-content-end  align-items-baseline">
            <a routerLink="/Forget-Password" class="text-secondary text-decoration-underline me-2 text-white">Forget Password?</a>
-         <button  class="btn btn-success px-3 mt-2 " [disabled]="LoginFormObj.invalid || isloading">
+         <button  class="btn btn-success px-3 mt-2 " [disabled]="LoginFormObj.invalid || isloading()">
           @if(isloading()==false)
           {
                <span>Login</span>
